@@ -1,18 +1,25 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SearchBar />
+    <JobItem v-for="(item, index) in jobsData" :key="index" :item="item" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import jsonData from '@/assets/json/data.json';
+import JobItem from '@/components/JobItem.vue';
+import SearchBar from '@/components/SearchBar.vue';
+import { ref } from '@vue/reactivity';
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+    SearchBar, JobItem
+  },
+  setup() {
+    const jobsData = ref(jsonData);
+
+    return { jobsData }
   }
 }
 </script>

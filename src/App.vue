@@ -1,30 +1,58 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="container">
+    <div class="header">
+      <img alt="" src="@/assets/img/bg-header.svg">
+    </div>
+    <div class="app-content">
+      <router-view/>
+    </div>
+  </div>
+  
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-nav {
-  padding: 30px;
+html, body {
+	position: relative;
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $font-family-main;
+  margin: 0;
+  padding: 0;
+  background: #f0fafb;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+#app {
+  font-family: $font-family-main;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  position: relative;
+	overflow-x: hidden;
+  background: #f0fafb;
+  min-height: 100vh;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
+.container {
+  .header {
+    background: $main-color;
+
+    img {
+      display: block;
+      min-width: 100%;
+      max-width: 100%;
     }
+  }
+  .app-content {
+    max-width: 1110px;
+    margin: 0 auto;
   }
 }
 </style>
