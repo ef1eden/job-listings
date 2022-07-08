@@ -26,16 +26,18 @@
             </div>
         </div>
         <div class="filters">
-            <span class="btn">{{ item.role }}</span>
-            <span class="btn">{{ item.level }}</span>
-            <span class="btn" v-for="(languages, index) in item.languages" :key="index">{{ languages }}</span>
-            <span class="btn" v-for="(tools, index) in item.tools" :key="index">{{ tools }}</span>
+            <span class="btn" @click="filterList">{{ item.role }}</span>
+            <span class="btn" @click="filterList">{{ item.level }}</span>
+            <span class="btn" @click="filterList" v-for="(languages, index) in item.languages" :key="index">{{ languages }}</span>
+            <span class="btn" @click="filterList" v-for="(tools, index) in item.tools" :key="index">{{ tools }}</span>
         </div>
     </div>
   </div>
 </template>
 
 <script>
+import { useStore } from 'vuex';
+
 export default {
     name: 'JobItem',
     props: {
@@ -45,6 +47,13 @@ export default {
         }
     },
     setup() {
+        const store = useStore();
+
+        function filterList(e) {
+            store.commit('ADD_SEARCH_TAG', e.target.innerText);
+        }
+    
+        return { filterList }
     }
 }
 </script>
